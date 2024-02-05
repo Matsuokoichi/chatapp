@@ -3,13 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>index</title>
-        <link rel="stylesheet" type="text/css" href="../myapp/css/index.css">
+        <link rel="stylesheet" type="text/css" href="../../static/myapp/css/index.css">
     </head>
 
     <body>
-
-    <button>ログイン</button>
-    <button>会員登録</button>
+    <div class="hako">
+        <a href="{% url 'login_view'}" class="">
+            <button>ログイン</button>
+        </a>
+        
+        <a href="{% url 'singup_view'}" class="">
+            <button>会員登録</button>
+        </a>
+    </div>
+    
 
     </body>
 </html>
