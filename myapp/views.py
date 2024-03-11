@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, get_user_model, login
-from .forms import SignUpForm
+from .forms import SignUpForm,LoginForm
+from django.contrib.auth.views import LoginView
 
 User = get_user_model()
 
@@ -9,7 +10,7 @@ def index(request):
 
 def signup_view(request):
 
-    if request.mathod == "GET":
+    if request.method == "GET":
         form = SignUpForm()
         error_message = ''
     elif request.method == "POST":
@@ -26,13 +27,17 @@ def signup_view(request):
 
             print(form.errors)
 
-        context = {
-            "form":form,
-        }
+    context = {
+        "form":form,
+    }
     return render(request, "myapp/signup.html",context)
 
-def login_view(request):
-    return render(request, "myapp/login.html")
+
+
+class login_view(LoginView):
+    authentication_form = LoginForm
+    template_name = "myapp/login.html"
+
 
 def friends(request):
     return render(request, "myapp/friends.html")

@@ -1,22 +1,17 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>index</title>
-        <link rel="stylesheet" type="text/css" href="../../static/myapp/css/index.css">
-    </head>
+{% extends "myapp/base.html" %}
+{% load static %}
 
-    <body>
-    <div class="hako">
-        <a href="{% url 'login_view'}" class="">
-            <button>ログイン</button>
-        </a>
-        
-        <a href="{% url 'singup_view'}" class="">
-            <button>会員登録</button>
-        </a>
-    </div>
-    
+{% block extra_style %}
+<link rel="stylesheet" href="{% static 'myapp/css/index.css' %}">
+{% endblock %}
 
-    </body>
-</html>
+{% block header %}{% endblock %}
+
+{% block content %}
+<div class="index-buttons">
+    <a href="{% url 'login_view' %}" class="index-button">ログイン</a>
+    <a href="{% url 'signup_view' %}" class="index-button">会員登録</a>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
