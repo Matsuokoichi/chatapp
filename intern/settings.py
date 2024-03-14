@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
 ]
 
 SITE_ID = 1
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'intern.urls'
@@ -134,5 +136,21 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'myapp.user'
+AUTH_USER_MODEL = 'myapp.User'
 LOGIN_REDIRECT_URL = 'friends'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'login_view'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'EMAIL'
+ACCOUNT_USERNAME_REQUIRED = False
+
+ACCOUNT_EMAIL_VERIFICATION = 'MANDATORY'
+ACCOUNT_LOGOUT_REQUIRED = True
+
+
+
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_EMAIL_SUBJECT = ''
+
+DEFAULT_FROM_EMAIL = 'aadmin@example.com'
+
+

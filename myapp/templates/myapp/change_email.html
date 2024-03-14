@@ -3,7 +3,7 @@
 {% block header_title %}メール{% endblock %}
 
 {% block content %}
-<form method="post" action="{% url 'change_email' %}">
+<form method="post" action="{% url 'mail_change' %}">
     <table>
         {% for field in form %}
         <tr>
