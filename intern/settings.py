@@ -42,13 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
 ]
 
 SITE_ID = 1
 
 AUTHENTICATION_BACKENDS = (
-    "allauth.account.auth_backends.AuthenticationBackend",
+    'allauth.account.auth_backends.AuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -138,12 +137,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'myapp.User'
 LOGIN_REDIRECT_URL = 'friends'
-ACCOUNT_LOGOUT_REDIRECT_URL = 'login_view'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_signup'
 
-ACCOUNT_AUTHENTICATION_METHOD = 'EMAIL'
+
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_REQUIRED=True
 
-ACCOUNT_EMAIL_VERIFICATION = 'MANDATORY'
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_LOGOUT_REQUIRED = True
 
 
@@ -151,6 +153,11 @@ ACCOUNT_LOGOUT_REQUIRED = True
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_SUBJECT = ''
 
-DEFAULT_FROM_EMAIL = 'aadmin@example.com'
+DEFAULT_FROM_EMAIL = 'admin@example.com'
 
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+
+ACCOUNT_CONFIRM_EMAIL_ON_GET = "true"
 
